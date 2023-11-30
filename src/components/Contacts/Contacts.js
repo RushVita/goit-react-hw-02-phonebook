@@ -1,12 +1,18 @@
-export const Contacts = ({ name }) => {
+import { ListItem, PhoneList } from './Contacts.styled';
+import { nanoid } from 'nanoid';
+
+export const Contacts = ({ contacts }) => {
   return (
     <div>
-      <ul>
-        <li>Rosie Simpson</li>
-        <li>Hermione Kline</li>
-        <li>Eden Clements</li>
-        <li>{name}</li>
-      </ul>
+      <PhoneList>
+        {contacts.map(item => {
+          return (
+            <ListItem key={nanoid()}>
+              {item.name}: {item.number}
+            </ListItem>
+          );
+        })}
+      </PhoneList>
     </div>
   );
 };
